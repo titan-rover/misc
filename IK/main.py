@@ -39,13 +39,11 @@ def ik(xe, ye, ze, phi_e):
     theta2 = np.pi - beta
     theta3 = phi_e - theta1 - theta2
 
-    # this is because our robot measures j2 from the neutral position (that is, the angle measure is relative to the z-axis instead of the xy-plane
-    theta1 = np.pi/2 - theta1
 
     # we store our answers in a vector
     theta = [theta0, theta1, theta2, theta3]
 
-    # we consdier the alternative elbow-up configuration (if it exists).
+    # we consider the alternative elbow-up configuration (if it exists).
     theta_1 = theta1 + 2 * gamma
     theta_2 = -theta2
     theta_3 = phi_e - theta_1 - theta_2
@@ -53,18 +51,22 @@ def ik(xe, ye, ze, phi_e):
     theta_i = [theta0, theta_1, theta_2, theta_3]
 
     theta_array = np.degrees([theta, theta_i])
-    return theta_array
+    #return theta_array
 
     # range of our joints
-    theta1_range = [-15, 75]
-    theta2_range = [0, 90]
-    theta3_range = [0, 90]
+    theta1_range = [15, 105]
+    theta2_range = [-90, 0]
+    theta3_range = [-90, 0]
 
     theta_range = [theta1_range, theta2_range, theta3_range]
 
     # checking our limits
     if theta_array[0][1] >= theta_range[0][0] and theta_array[0][1] <= theta_range[0][1] and theta_array[0][2] >= theta_range[1][0] and theta_array[0][2] <= theta_range[1][1] and theta_array[0][3] >= theta_range[2][0] and theta_array[0][3] <= theta_range[2][1]:
+        print("returing first")
         return theta_array[0]
+    elif theta_array[1][1] >= theta_range[0][0] and theta_array[1][1] <= theta_range[0][1] and theta_array[1][2] >= theta_range[1][0] and theta_array[1][2] <= theta_range[1][1] and theta_array[1][3] >= theta_range[2][0] and theta_array[1][3] <= theta_range[2][1]:
+        print("returning second")
+        return theta_array[1]
     else:
         for i in range(3):
             if theta_array[0][i+1] < theta_range[i][0] or theta_array[0][i+1] > theta_range[i][1]:
@@ -76,13 +78,14 @@ l1 = 32.65
 l2 = 20.38
 l3 = 16.05
 
-# suppose we want to point at the point (20,20, 20) and we want our arm to be horizontal
-xe = 30
-ye = 30
-ze = 50
+# suppose we want our arm in a "neutral" position with the l1 straight up and l2 and l3 straight out
+xe = 36.43
+ye = 0
+ze = 32.65
 
-phi_e = 70
+phi_e = 0
 
 theta_array = ik(xe, ye, ze, phi_e)
 print(theta_array)
 
+#notice the expected values are returned?
