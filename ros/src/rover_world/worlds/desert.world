@@ -1,0 +1,10 @@
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://desert5</uri>
+    </include>
+  </world>
+</sdf>

@@ -1,0 +1,34 @@
+<launch>
+  <include file="$(find rover_world)/launch/gazebo.launch" />
+
+  <!--rosparam command="load" file="$(find rover_world)/config/arm_control_speed.yaml"/>
+  <node name="rover_arm_controllers" 
+        pkg="controller_manager"
+        type="spawner"
+        args="
+              /arm/shoulder_swivel
+              /arm/shoulder_updown
+              /arm/elbow
+              /arm/wrist1
+              /arm/wrist2
+              /arm/wrist3
+              /arm/arm_state_controller"/-->
+
+  <rosparam command="load" file="$(find rover_world)/config/rover_control.yaml"/>
+  <node name="rover_base_controllers" 
+        pkg="controller_manager"
+        type="spawner"
+        args="
+              /base/fr_controller
+              /base/fl_controller
+              /base/rr_controller
+              /base/rl_controller"/>
+
+  <!--node name="arm_controller" pkg="rover_simulation" type="rover_arm_controller" output="screen"/-->
+  <!-- <node name="rover_arm_teleop" pkg="rover_simulation" type="slider_control.py"/> -->
+  <!--node name="base_controller" pkg="rover_simulation" type="rover_base_controller" output="screen"/-->
+  <!-- Not using the base teleop key right now -->
+  <!-- <node name="rover_base_teleop" pkg="rover_simulation" type="cmd_vel.py"/> -->
+  <!--node name="rover_odom_pub" pkg="rover_simulation" type="rover_odom_publisher"/ -->
+
+</launch>
