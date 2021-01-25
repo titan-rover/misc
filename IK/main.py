@@ -11,7 +11,7 @@ def ik(xe, ye, ze, phi_e):
     # first, we need to convert the coordinates (xe, ye) to polar coordinates
     re = np.sqrt(xe**2 + ye**2)
     # this is j1
-    theta0 = np.arctan(ye/xe)
+    theta0 = np.arctan2(ye,xe)
 
     # these are the solutions for the inverse kinematics of a 3 dof articulated arm on a plane
     # note that we will be considering an rz - plane, that is a 2d plane orthogonal to the xy-plane but oriented at theta0 degrees
@@ -23,7 +23,7 @@ def ik(xe, ye, ze, phi_e):
     a = (l1 ** 2 + l2 ** 2 - rw ** 2 - zw ** 2) / (2 * l1 * l2)
     b = (rw ** 2 + zw ** 2 + l1 ** 2 - l2 ** 2) / (2 * l1 * (rw ** 2 + zw ** 2) ** (1 / 2))
 
-    alpha = np.arctan(zw / rw)
+    alpha = np.arctan2(zw , rw)
     # here we are checking that our cosine is a valid input.
     if a < 1 and a > -1:
         beta = np.arccos(a)
@@ -79,8 +79,8 @@ l2 = 20.38
 l3 = 16.05
 
 # suppose we want our arm in a "neutral" position with the l1 straight up and l2 and l3 straight out
-xe = 36.43
-ye = 0
+xe = 26.43
+ye = 50
 ze = 32.65
 
 phi_e = 0
@@ -88,4 +88,4 @@ phi_e = 0
 theta_array = ik(xe, ye, ze, phi_e)
 print(theta_array)
 
-#notice the expected values are returned?
+#notice the expected values are returned
