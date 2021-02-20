@@ -28,13 +28,13 @@
         <collision>
             <origin rpy="0.0 0 0" xyz="0 0 0"/>
             <geometry>
-                <box size="1.5 0.5 .005"/>
+                <box size="1.1176 0.4064 0.127"/>
             </geometry>
         </collision>
         <visual>
             <origin rpy="0.0 0 0" xyz="0 0 0"/>
             <geometry>
-                <box size="1.5 0.5 .005"/>
+                <box size="1.1176 0.4064 0.127"/>
             </geometry>
             <material name="red"/>
         </visual>
@@ -47,6 +47,206 @@
         <material>Gazebo/Red</material>
     </gazebo>
 
+    <!-- Antenna -->>
+    <link name="antenna_link">
+      <inertial>
+        <origin xyz="0 0 0.5" rpy="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      </inertial>
+   
+      <visual>
+        <origin xyz="0 0.5588 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.0635" length="1.5748"/>
+        </geometry>
+        <material name="Cyan">
+          <color rgba="0 1.0 1.0 1.0"/>
+        </material>
+      </visual>
+   
+      <collision>
+        <origin xyz="0 0.5588 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.0635" length="1.5748"/>
+        </geometry>
+  </collision>
+    </link>
+    <gazebo reference="antenna_link">
+        <mu1 value="200.0"/>
+        <mu2 value="100.0"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <joint name="Chassie_antenna_link_Joint" type="continuous">
+    	<parent link="base_link"/>
+    	<child link="antenna_link"/>
+        <origin xyz="0 0 0.096" rpy="0 0 0"/>
+        <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
+        <axis xyz="1 0 0"/>
+	</joint>
+
+    <!-- Leg_FR -->>
+    <link name="Leg_FR">
+      <inertial>
+        <origin xyz="0 0 0.5" rpy="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      </inertial>
+   
+      <visual>
+        <origin xyz="0.5588 0.2032 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.3048 0.127 0.1143" />
+        </geometry>
+        <material name="Cyan">
+          <color rgba="0 1.0 1.0 1.0"/>
+        </material>
+      </visual>
+   
+      <collision>
+        <origin xyz="0.5588 0.2032 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.3048 0.127 0.1143" />
+        </geometry>
+  </collision>
+    </link>
+        <gazebo reference="Leg_FR">
+        <mu1 value="200.0"/>
+        <mu2 value="100.0"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <joint name="Chassie_Leg_FR_Joint" type="continuous">
+    	<parent link="base_link"/>
+    	<child link="Leg_FR"/>
+        <origin xyz="0 0 0.096" rpy="0 0 0"/>
+        <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
+        <axis xyz="1 0 0"/>
+	</joint>
+
+    <!-- Leg_FL -->>
+    <link name="Leg_FL">
+      <inertial>
+        <origin xyz="0 0 0.5" rpy="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      </inertial>
+   
+      <visual>
+        <origin xyz="-0.5588 0.2032 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.3048 0.127 0.1143" />
+        </geometry>
+        <material name="Cyan">
+          <color rgba="0 1.0 1.0 1.0"/>
+        </material>
+      </visual>
+   
+      <collision>
+        <origin xyz="-0.5588 0.2032 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.3048 0.127 0.1143" />
+        </geometry>
+  </collision>
+    </link>
+        <gazebo reference="Leg_FL">
+        <mu1 value="200.0"/>
+        <mu2 value="100.0"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <joint name="Chassie_Leg_FL_Joint" type="continuous">
+    	<parent link="base_link"/>
+    	<child link="Leg_FL"/>
+        <origin xyz="0 0 0.096" rpy="0 0 0"/>
+        <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
+        <axis xyz="1 0 0"/>
+	</joint>
+
+    <!-- Leg_RR -->>
+    <link name="Leg_RR">
+      <inertial>
+        <origin xyz="0 0 0.5" rpy="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      </inertial>
+   
+      <visual>
+        <origin xyz="0.5588 -0.2032 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.3048 0.127 0.1143" />
+        </geometry>
+        <material name="Cyan">
+          <color rgba="0 1.0 1.0 1.0"/>
+        </material>
+      </visual>
+   
+      <collision>
+        <origin xyz="0.5588 -0.2032 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.3048 0.127 0.1143" />
+        </geometry>
+  </collision>
+    </link>
+        <gazebo reference="Leg_RR">
+        <mu1 value="200.0"/>
+        <mu2 value="100.0"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <joint name="Chassie_Leg_RR_Joint" type="continuous">
+    	<parent link="base_link"/>
+    	<child link="Leg_RR"/>
+        <origin xyz="0 0 0.096" rpy="0 0 0"/>
+        <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
+        <axis xyz="1 0 0"/>
+	</joint>
+
+    <!-- Leg_RL -->>
+    <link name="Leg_RL">
+      <inertial>
+        <origin xyz="0 0 0.5" rpy="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+      </inertial>
+   
+      <visual>
+        <origin xyz="-0.5588 -0.2032 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.3048 0.127 0.1143" />
+        </geometry>
+        <material name="Cyan">
+          <color rgba="0 1.0 1.0 1.0"/>
+        </material>
+      </visual>
+   
+      <collision>
+        <origin xyz="-0.5588 -0.2032 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.3048 0.127 0.1143" />
+        </geometry>
+  </collision>
+    </link>
+        <gazebo reference="Leg_RL">
+        <mu1 value="200.0"/>
+        <mu2 value="100.0"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <joint name="Chassie_Leg_RL_Joint" type="continuous">
+    	<parent link="base_link"/>
+    	<child link="Leg_RL"/>
+        <origin xyz="0 0 0.096" rpy="0 0 0"/>
+        <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
+        <axis xyz="1 0 0"/>
+	</joint>
+
     <!-- Wheel_FR -->
     <link name="Wheel_FR">
  	    <inertial>
@@ -55,15 +255,15 @@
             <inertia ixx="0.000220439071667" ixy="0.0" ixz="0.0" iyy="0.000220439071667" iyz="0.0" izz="0.00026615281"/>
         </inertial>
         <collision>
-            <origin xyz="0 0 0.0362" rpy="0 0 0"/>
+            <origin xyz="0.7588 0.2032 0" rpy="0 0 0" />
             <geometry>
-                <cylinder radius="0.4572" length="0.254"/>
+                <cylinder radius="0.508" length="0.254"/>
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0.0362" rpy="0 0 0"/>
+            <origin xyz="0.7588 0.2032 0" rpy="0 0 0" />
             <geometry>
-                <cylinder radius="0.4572" length="0.254"/>
+                <cylinder radius="0.508" length="0.254"/>
             </geometry>
             <material name="blue"/>
         </visual>
@@ -78,21 +278,12 @@
         <material>Gazebo/Grey</material>
     </gazebo>
     <joint name="Chassie_Wheel_FR_Joint" type="continuous">
-    	<parent link="base_link"/>
+    	<parent link="Leg_FR"/>
     	<child link="Wheel_FR"/>
         <origin xyz="0 0 0.096" rpy="0 0 0"/>
         <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
         <axis xyz="1 0 0"/>
 	</joint>
-    <transmission name="fr_trans">
-        <type>transmission_interface/SimpleTransmission</type>
-        <actuator name="Chassie_Wheel_FR_motor">
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-        <joint name="Chassie_Wheel_FR_Joint">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-    </transmission>
 
     <!-- Wheel_FL -->
     <link name="Wheel_FL">
@@ -102,15 +293,15 @@
             <inertia ixx="0.000220439071667" ixy="0.0" ixz="0.0" iyy="0.000220439071667" iyz="0.0" izz="0.00026615281"/>
         </inertial>
         <collision>
-            <origin xyz="0 0 0.0362" rpy="0 0 0"/>
+            <origin xyz="-0.7588 0.2032 0" rpy="0 0 0" />
             <geometry>
-                <cylinder radius="0.4572" length="0.254"/>
+                <cylinder radius="0.508" length="0.254"/>
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0.0362" rpy="0 0 0"/>
+            <origin xyz="-0.7588 0.2032 0" rpy="0 0 0" />
             <geometry>
-                <cylinder radius="0.4572" length="0.254"/>
+                <cylinder radius="0.508" length="0.254"/>
             </geometry>
             <material name="blue"/>
         </visual>
@@ -125,7 +316,7 @@
         <material>Gazebo/Grey</material>
     </gazebo>
     <joint name="Chassie_Wheel_FL_Joint" type="continuous">
-    	<parent link="base_link"/>
+    	<parent link="Leg_FL"/>
     	<child link="Wheel_FL"/>
         <origin xyz="0 0 0.096" rpy="0 0 0"/>
         <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
@@ -149,15 +340,15 @@
             <inertia ixx="0.000220439071667" ixy="0.0" ixz="0.0" iyy="0.000220439071667" iyz="0.0" izz="0.00026615281"/>
         </inertial>
         <collision>
-            <origin xyz="0 0 0.0362" rpy="0 0 0"/>
+            <origin xyz="0.7588 -0.2032 0" rpy="0 0 0" />
             <geometry>
-                <cylinder radius="0.4572" length="0.254"/>
+                <cylinder radius="0.508" length="0.254"/>
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0.0362" rpy="0 0 0"/>
+            <origin xyz="0.7588 -0.2032 0" rpy="0 0 0" />
             <geometry>
-                <cylinder radius="0.4572" length="0.254"/>
+                <cylinder radius="0.508" length="0.254"/>
             </geometry>
             <material name="blue"/>
         </visual>
@@ -172,7 +363,7 @@
         <material>Gazebo/Grey</material>
     </gazebo>
     <joint name="Chassie_Wheel_RR_Joint" type="continuous">
-    	<parent link="base_link"/>
+    	<parent link="Leg_RR"/>
     	<child link="Wheel_RR"/>
         <origin xyz="0 0 0.096" rpy="0 0 0"/>
         <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
@@ -196,15 +387,15 @@
             <inertia ixx="0.000220439071667" ixy="0.0" ixz="0.0" iyy="0.000220439071667" iyz="0.0" izz="0.00026615281"/>
         </inertial>
         <collision>
-            <origin xyz="0 0 0.0362" rpy="0 0 0"/>
+            <origin xyz="-0.7588 -0.2032 0" rpy="0 0 0" />
             <geometry>
-                <cylinder radius="0.4572" length="0.254"/>
+                <cylinder radius="0.508" length="0.254"/>
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0.0362" rpy="0 0 0"/>
+            <origin xyz="-0.7588 -0.2032 0" rpy="0 0 0" />
             <geometry>
-                <cylinder radius="0.4572" length="0.254"/>
+                <cylinder radius="0.508" length="0.254"/>
             </geometry>
             <material name="blue"/>
         </visual>
@@ -219,7 +410,7 @@
         <material>Gazebo/Grey</material>
     </gazebo>
     <joint name="Chassie_Wheel_RL_Joint" type="continuous">
-    	<parent link="base_link"/>
+    	<parent link="Leg_RL"/>
     	<child link="Wheel_RL"/>
         <origin xyz="0 0 0.096" rpy="0 0 0"/>
         <limit lower="0" upper="0" effort="10.0" velocity="8.94"/>
