@@ -66,6 +66,83 @@
     </visual> -->
   </link>
 
+  <!-- Test Leg -->
+  <link name="leg_rl">
+    <inertial>
+      <mass value="${m_leg}"/>
+      <xacro:box_inertia m="${m_leg}" x="${l_leg}" y="${w_leg}" z="${h_leg}"/>
+    </inertial>
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+      </geometry>
+    </collision>
+    <visual name="leg_rl_visual">
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="leg_rr">
+    <inertial>
+      <mass value="${m_leg}"/>
+      <xacro:box_inertia m="${m_leg}" x="${l_leg}" y="${w_leg}" z="${h_leg}"/>
+    </inertial>
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+      </geometry>
+    </collision>
+    <visual name="leg_rr_visual">
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="leg_fl">
+    <inertial>
+      <mass value="${m_leg}"/>
+      <xacro:box_inertia m="${m_leg}" x="${l_leg}" y="${w_leg}" z="${h_leg}"/>
+    </inertial>
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+      </geometry>
+    </collision>
+    <visual name="leg_fl_visual">
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="leg_fr">
+    <inertial>
+      <mass value="${m_leg}"/>
+      <xacro:box_inertia m="${m_leg}" x="${l_leg}" y="${w_leg}" z="${h_leg}"/>
+    </inertial>
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+      </geometry>
+    </collision>
+    <visual name="leg_fr_visual">
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+      </geometry>
+    </visual>
+  </link>
+
   <!-- Add the wheels for the robot -->
   <link name="wheel_rl">
     <collision name="collision">
@@ -161,7 +238,6 @@
     </inertial>
   </link>
 
-  <!--TEST-->
   <link name="wheel_fl">
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
@@ -195,36 +271,68 @@
 
   <!-- Set joints for the wheels which can be controlled over ROS -->
   <!-- it is continuous since it is a wheel-->
-  <joint type="continuous" name="base_link_joint_wheel_rl">
-    <origin xyz="${-wheel_dist_center} ${y_chassis/2+h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
+  <joint type="continuous" name="leg_fr_joint_wheel_rl">
+    <origin xyz="0 ${l_leg/2+h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
     <child link="wheel_rl"/>
-    <parent link="base_link"/>
+    <parent link="leg_rl"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <!-- velocity here is the max allowed velocity not the acutal velocity-->
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
-  <joint type="continuous" name="base_link_joint_wheel_rr">
-    <origin xyz="${-wheel_dist_center} ${-y_chassis/2-h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
+  <joint type="continuous" name="leg_rr_joint_wheel_rr">
+    <origin xyz="0 ${-y_chassis/2-h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
     <child link="wheel_rr"/>
-    <parent link="base_link"/>
+    <parent link="leg_rr"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
-  <!--TEST-->
-  <joint type="continuous" name="base_link_joint_wheel_fr">
-    <origin xyz="${wheel_dist_center} ${-y_chassis/2-h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
+  <joint type="continuous" name="leg_fr_joint_wheel_fr">
+    <origin xyz="0 ${-l_leg/2-h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
     <child link="wheel_fr"/>
-    <parent link="base_link"/>
+    <parent link="leg_fr"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
-    <joint type="continuous" name="base_link_joint_wheel_fl">
-    <origin xyz="${wheel_dist_center} ${y_chassis/2+h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
+  <joint type="continuous" name="leg_fl_joint_wheel_fl">
+    <origin xyz="0 ${l_leg/2+h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
     <child link="wheel_fl"/>
-    <parent link="base_link"/>
+    <parent link="leg_fl"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+   <joint type="revolute" name="chassis_link_joint_leg_rl">
+    <origin xyz="${-wheel_dist_center} ${y_chassis/2+h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
+    <child link="leg_rl"/>
+    <parent link="chassis_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  <joint type="revolute" name="chassis_link_joint_leg_rr">
+    <origin xyz="${-wheel_dist_center} ${-y_chassis/2-h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
+    <child link="leg_rr"/>
+    <parent link="chassis_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  <joint type="revolute" name="chassis_link_joint_leg_fl">
+    <origin xyz="${wheel_dist_center} ${y_chassis/2+h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
+    <child link="leg_fl"/>
+    <parent link="chassis_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  <joint type="revolute" name="chassis_link_joint_leg_fr">
+    <origin xyz="${wheel_dist_center} ${-y_chassis/2-h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
+    <child link="leg_fr"/>
+    <parent link="chassis_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>

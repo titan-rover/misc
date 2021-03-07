@@ -16,10 +16,11 @@
   <xacro:property name="L_wheel" value="0.1788" />
   <xacro:property name="wheel_dist_center" value="0.5588" />
 
-  <!-- Parameter for the legs, length [m], width [m], height [m]-->
+  <!-- Parameter for the legs, length [m], width [m], height [m], mass [kg]-->
   <xacro:property name="l_leg" value="0.3048" />
-  <xacro:property name="w_leg" value="0.127" />
+  <xacro:property name="w_leg" value="0.1270" />
   <xacro:property name="h_leg" value="0.1143" />
+  <xacro:property name="m_leg" value="2.0" />
 
   <!-- Parameter for the antenna, radius [m], length [m] -->
   <xacro:property name="r_antenna" value="0.0635" />
