@@ -9,8 +9,8 @@
       <alwaysOn>true</alwaysOn>
       <!-- the buad rate is 20 hz-->
       <updateRate>20</updateRate>
-      <leftJoint>left_wheel_hinge</leftJoint>
-      <rightJoint>right_wheel_hinge</rightJoint>
+      <leftJoint>base_link_joint_wheel_rl</leftJoint>
+      <rightJoint>base_link_joint_wheel_rr</rightJoint>
       <wheelSeparation>${L_wheel*2}</wheelSeparation>
       <wheelDiameter>${r_wheel*2}</wheelDiameter>
       <wheelTorque>${torque_wheel}</wheelTorque>
@@ -27,3 +27,4 @@
     <material>Gazebo/Orange</material>
   </gazebo>
 </robot>
+
