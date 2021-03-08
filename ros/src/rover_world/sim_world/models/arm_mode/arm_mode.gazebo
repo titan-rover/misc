@@ -2,29 +2,5 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find sim_world)/models/arm_mode/parameter.xacro" />
   
-  <!-- TODO: Add same update rates over parameter setting and define all parameters in config -->
-  <!-- Differential Drive controller from Gazebo, TODO: Add noise by adapting the plugin -->
-  <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <alwaysOn>true</alwaysOn>
-      <!-- the buad rate is 20 hz-->
-      <updateRate>20</updateRate>
-      <leftJoint>leg_rl_joint_wheel_rl</leftJoint>
-      <rightJoint>leg_rr_joint_wheel_rr</rightJoint>
-      <wheelSeparation>${L_wheel*2}</wheelSeparation>
-      <wheelDiameter>${r_wheel*2}</wheelDiameter>
-      <wheelTorque>${torque_wheel}</wheelTorque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom_link</odometryFrame>
-      <robotBaseFrame>base_link</robotBaseFrame>
-      <legacyMode>false</legacyMode>
-    </plugin>
-  </gazebo>
-  
-  <!-- Paint the robot -->
-  <gazebo reference="base_link">
-    <material>Gazebo/Orange</material>
-  </gazebo>
 </robot>
 
