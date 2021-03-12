@@ -64,9 +64,25 @@
         <sphere radius="${r_wheel/2}"/>
       </geometry>
     </visual> -->
+
+    <!-- Add antenna to the rover -->
+    <collision name="antenna">
+      <origin xyz="${-x_chassis/2-r_antenna} 0 ${l_antenna/2-z_chassis/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${r_antenna}" length="${l_antenna}"/>
+      </geometry>
+    </collision>
+
+    <visual name="antenna_visual">
+      <origin xyz="${-x_chassis/2-r_antenna} 0 ${l_antenna/2-z_chassis/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${r_antenna}" length="${l_antenna}"/>
+      </geometry>
+    </visual>
+
   </link>
 
-  <!-- Test Leg -->
+  <!-- Add legs for the robot -->
   <link name="leg_rl">
     <inertial>
       <mass value="${m_leg}"/>
@@ -206,7 +222,6 @@
     </inertial>
   </link>
 
-  <!--TEST-->
   <link name="wheel_fr">
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
@@ -338,4 +353,5 @@
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 </robot>
+
 
