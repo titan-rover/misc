@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Define parameter for the autonomous subsystem -->
+  <!-- Parameter for the ZED camera, size [m] and mass [kg] -->
+  <!-- https://www.stereolabs.com/zed/ -->
+  <xacro:property name="x_zed_cam" value="0.175" />
+  <xacro:property name="y_zed_cam" value="0.033" />
+  <xacro:property name="z_zed_cam" value="0.030" />
+  <xacro:property name="m_zed_cam" value="0.135" />
+</robot>
+

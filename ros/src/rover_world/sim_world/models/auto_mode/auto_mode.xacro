@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+
+<!-- choose a name space and start xacro -->
+<robot name="auto_mode" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <!-- Start by including all required xacro files which hold the macros -->
+  <xacro:include filename="$(find sim_world)/models/auto_mode/auto_mode.gazebo" />
+  <xacro:include filename="$(find sim_world)/models/auto_mode/materials.xacro" />
+  <xacro:include filename="$(find sim_world)/models/auto_mode/macros.xacro"    />
+  <xacro:include filename="$(find sim_world)/models/auto_mode/parameter.xacro" />
+  <xacro:include filename="$(find sim_world)/models/common_models/common_models.xacro" />
+
+  <!-- Add the ZED camera -->
+  <link name="zed_cam_link">
+
+    <inertial>
+      <mass value="${m_zed_cam}"/>
+      <xacro:box_inertia m="${m_zed_cam}" x="${x_zed_cam}" y="${y_zed_cam}" z="${z_zed_cam}"/>
+    </inertial>
+
+    <collision name="collision">
+      <origin xyz="${x_chassis/2} 0 ${(z_chassis/2)+z_zed_cam}" rpy="0 0 ${pi/2}"/>
+      <geometry>
+        <box size="${x_zed_cam} ${y_zed_cam} ${z_zed_cam}"/>
+      </geometry>
+    </collision>
+
+    <visual name="zed_cam_visual">
+      <origin xyz="${x_chassis/2} 0 ${(z_chassis/2)+z_zed_cam}" rpy="0 0 ${pi/2}"/>
+      <geometry>
+        <box size="${x_zed_cam} ${y_zed_cam} ${z_zed_cam}"/>
+      </geometry>
+    </visual>
+
+  </link>
+
+  <!-- Fix ZED camera to chassis -->
+  <joint type="fixed" name="chassis_to_zed_cam">
+    <parent link="chassis_link"/>
+    <child link="zed_cam_link"/>
+  </joint>
+</robot>
+
