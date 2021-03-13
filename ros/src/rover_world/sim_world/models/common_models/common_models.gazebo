@@ -11,10 +11,10 @@
       <updateRate>20</updateRate>
       <leftJoint>leg_rl_joint_wheel_rl</leftJoint>
       <rightJoint>leg_rr_joint_wheel_rr</rightJoint>
-      <wheelSeparation>${L_wheel*2}</wheelSeparation>
+      <wheelSeparation>${h_wheel+l_leg*2+y_chassis}</wheelSeparation>
       <wheelDiameter>${r_wheel*2}</wheelDiameter>
       <wheelTorque>${torque_wheel}</wheelTorque>
-      <commandTopic>cmd_vel</commandTopic>
+      <commandTopic>/cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom_link</odometryFrame>
       <robotBaseFrame>base_link</robotBaseFrame>

@@ -286,7 +286,7 @@
 
   <!-- Set joints for the wheels which can be controlled over ROS -->
   <!-- it is continuous since it is a wheel-->
-  <joint type="continuous" name="leg_fr_joint_wheel_rl">
+  <joint type="continuous" name="leg_rl_joint_wheel_rl">
     <origin xyz="0 ${l_leg/2+h_wheel/2} ${r_wheel/2-z_chassis/2}" rpy="0 0 0"/>
     <child link="wheel_rl"/>
     <parent link="leg_rl"/>
