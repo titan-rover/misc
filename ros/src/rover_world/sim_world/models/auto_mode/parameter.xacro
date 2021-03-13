@@ -1,11 +1,37 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Define parameter for the autonomous subsystem -->
-  <!-- Parameter for the ZED camera, size [m] and mass [kg] -->
-  <!-- https://www.stereolabs.com/zed/ -->
+
+  <!-- Parameters for ZED camera. See: https://www.stereolabs.com/zed/ -->
+
+  <!-- Physical parameters: xyz [m] and mass [kg] -->
   <xacro:property name="x_zed_cam" value="0.175" />
   <xacro:property name="y_zed_cam" value="0.033" />
   <xacro:property name="z_zed_cam" value="0.030" />
   <xacro:property name="m_zed_cam" value="0.135" />
+
+  <!-- depth range: 0.3 - 25 m (0.98 to 82 ft) -->
+  <xacro:property name="min_depth_zed_cam" value="0.3" />
+  <xacro:property name="max_depth_zed_cam" value="25.0" />
+  
+  <!-- Video Mode        FPS     Output Resolution
+             2.2K        15      4416x1242
+             1080p       30      3840x1080
+             720p        60      2560x720
+             WVGA        100     1344x376 -->
+  <xacro:property name="fps_zed_cam" value="30" />
+  <xacro:property name="out_wd_zed_cam" value="3840" />
+  <xacro:property name="out_ht_zed_cam" value="1080" />
+
+  <!-- 90deg (H) x 60deg (V) x 100deg (D) max. -->
+  <xacro:property name="fov_h_zed_cam" value="${pi/2}" />
+  <xacro:property name="fov_v_zed_cam" value="${pi/3}" />
+
+  <!-- depth range: 0.3 - 25 m (0.98 to 82 ft)-->
+  <xacro:property name="dep_min_zed_cam" value="0.3" />
+  <xacro:property name="dep_max_zed_cam" value="25.0" />
+  
+
+
 </robot>
 

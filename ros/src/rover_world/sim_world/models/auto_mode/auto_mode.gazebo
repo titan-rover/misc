@@ -2,5 +2,87 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find sim_world)/models/auto_mode/parameter.xacro" />
   
+  <gazebo reference="zed_cam_link">
+
+    <sensor type="multicamera" name="zed_cam_sensor">
+      <!-- See for specs: https://www.stereolabs.com/zed/ -->
+
+      <!-- For temporary testing purposes, am assuming 1080p. -->
+
+      <!-- Video Mode  FPS     Output Resolution
+           2.2K        15      4416x1242
+           1080p       30      3840x1080
+           720p        60      2560x720
+           WVGA        100     1344x376 -->
+      <update_rate>${fps_zed_cam}</update_rate>
+
+      <camera name="zed_cam_left">
+        <!-- 90deg (H) x 60deg (V) x 100deg (D) max. -->
+        <horizontal_fov>${fov_h_zed_cam}</horizontal_fov>
+
+        <image>
+          <width>${out_wd_zed_cam}</width>
+          <height>${out_ht_zed_cam}</height>
+          <format>R8G8B8</format> 
+        </image>
+
+        <!-- depth range: 0.3 - 25 m (0.98 to 82 ft)-->
+        <clip>
+          <near>${dep_min_zed_cam}</near>
+          <far>${dep_max_zed_cam}</far>
+        </clip>
+
+        <!-- TODO: still default from tutorial -->
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+
+      <camera name="zed_cam_right">
+        <pose>0 -0.07 0 0 0 0</pose> <!-- TODO: still default from tutorial -->
+
+        <!-- 90deg (H) x 60deg (V) x 100deg (D) max. -->
+        <horizontal_fov>${fov_h_zed_cam}</horizontal_fov>
+
+        <image>
+          <width>${out_wd_zed_cam}</width>
+          <height>${out_ht_zed_cam}</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <!-- depth range: 0.3 - 25 m (0.98 to 82 ft)-->
+        <clip>
+          <near>${dep_min_zed_cam}</near>
+          <far>${dep_max_zed_cam}</far>
+        </clip>
+
+        <!-- TODO: still default from tutorial -->
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+
+      <!-- TODO: still default from tutorial -->
+      <plugin name="zed_cam_controller" filename="libgazebo_ros_multicamera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>zed_cam</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>zed_cam_optical_frame</frameName>
+        <!-- <rightFrameName>right_camera_optical_frame</rightFrameName> -->
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
 </robot>
 
