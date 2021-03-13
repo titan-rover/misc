@@ -5,18 +5,14 @@
   <gazebo reference="zed_cam_link">
 
     <sensor type="multicamera" name="zed_cam_sensor">
+      <!-- TODO: Change from ZED to mini ZED -->
       <!-- See for specs: https://www.stereolabs.com/zed/ -->
 
-      <!-- For temporary testing purposes, am assuming 1080p. -->
-
-      <!-- Video Mode  FPS     Output Resolution
-           2.2K        15      4416x1242
-           1080p       30      3840x1080
-           720p        60      2560x720
-           WVGA        100     1344x376 -->
       <update_rate>${fps_zed_cam}</update_rate>
 
       <camera name="zed_cam_left">
+        <pose>${x_pose_zed_cam} ${l_r_sep_zed_cam} ${z_pose_zed_cam} 0 0 0</pose>
+
         <!-- 90deg (H) x 60deg (V) x 100deg (D) max. -->
         <horizontal_fov>${fov_h_zed_cam}</horizontal_fov>
 
@@ -41,7 +37,7 @@
       </camera>
 
       <camera name="zed_cam_right">
-        <pose>0 -0.07 0 0 0 0</pose> <!-- TODO: still default from tutorial -->
+        <pose>${x_pose_zed_cam} ${-l_r_sep_zed_cam} ${z_pose_zed_cam} 0 0 0</pose>
 
         <!-- 90deg (H) x 60deg (V) x 100deg (D) max. -->
         <horizontal_fov>${fov_h_zed_cam}</horizontal_fov>

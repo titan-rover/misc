@@ -2,7 +2,13 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Define parameter for the autonomous subsystem -->
 
+  <!-- TODO: Apart from separation, all values need to be changed from ZED cam to ZED mini -->
   <!-- Parameters for ZED camera. See: https://www.stereolabs.com/zed/ -->
+
+  <!-- Origin (these values are temporary until I find out more about how it's mounted) -->
+  <xacro:property name="x_pose_zed_cam" value="${x_chassis/2}" />
+  <xacro:property name="y_pose_zed_cam" value="0" />
+  <xacro:property name="z_pose_zed_cam" value="${(z_chassis/2)+z_zed_cam}" />
 
   <!-- Physical parameters: xyz [m] and mass [kg] -->
   <xacro:property name="x_zed_cam" value="0.175" />
@@ -30,7 +36,9 @@
   <!-- depth range: 0.3 - 25 m (0.98 to 82 ft)-->
   <xacro:property name="dep_min_zed_cam" value="0.3" />
   <xacro:property name="dep_max_zed_cam" value="25.0" />
-  
+
+  <!-- separation between left and right sensors -->
+  <xacro:property name="l_r_sep_zed_cam" value="0.063" />
 
 
 </robot>

@@ -4,11 +4,11 @@
 <robot name="auto_mode" xmlns:xacro="http://www.ros.org/wiki/xacro">
   
   <!-- Start by including all required xacro files which hold the macros -->
+  <xacro:include filename="$(find sim_world)/models/common_models/common_models.xacro" />
   <xacro:include filename="$(find sim_world)/models/auto_mode/auto_mode.gazebo" />
   <xacro:include filename="$(find sim_world)/models/auto_mode/materials.xacro" />
   <xacro:include filename="$(find sim_world)/models/auto_mode/macros.xacro"    />
   <xacro:include filename="$(find sim_world)/models/auto_mode/parameter.xacro" />
-  <xacro:include filename="$(find sim_world)/models/common_models/common_models.xacro" />
 
   <!-- Add the ZED camera -->
   <link name="zed_cam_link">
@@ -19,14 +19,14 @@
     </inertial>
 
     <collision name="collision">
-      <origin xyz="${x_chassis/2} 0 ${(z_chassis/2)+z_zed_cam}" rpy="0 0 ${pi/2}"/>
+      <origin xyz="${x_pose_zed_cam} 0 ${z_pose_zed_cam}" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${x_zed_cam} ${y_zed_cam} ${z_zed_cam}"/>
       </geometry>
     </collision>
 
     <visual name="zed_cam_visual">
-      <origin xyz="${x_chassis/2} 0 ${(z_chassis/2)+z_zed_cam}" rpy="0 0 ${pi/2}"/>
+      <origin xyz="${x_pose_zed_cam} 0 ${z_pose_zed_cam}" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${x_zed_cam} ${y_zed_cam} ${z_zed_cam}"/>
       </geometry>
