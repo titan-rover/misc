@@ -89,13 +89,13 @@
       <xacro:box_inertia m="${m_leg}" x="${l_leg}" y="${w_leg}" z="${h_leg}"/>
     </inertial>
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${l_leg} ${w_leg} ${h_leg}"/>
       </geometry>
     </collision>
     <visual name="leg_rl_visual">
-      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${l_leg} ${w_leg} ${h_leg}"/>
       </geometry>
@@ -108,13 +108,13 @@
       <xacro:box_inertia m="${m_leg}" x="${l_leg}" y="${w_leg}" z="${h_leg}"/>
     </inertial>
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${l_leg} ${w_leg} ${h_leg}"/>
       </geometry>
     </collision>
     <visual name="leg_rr_visual">
-      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${l_leg} ${w_leg} ${h_leg}"/>
       </geometry>
@@ -127,13 +127,13 @@
       <xacro:box_inertia m="${m_leg}" x="${l_leg}" y="${w_leg}" z="${h_leg}"/>
     </inertial>
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${l_leg} ${w_leg} ${h_leg}"/>
       </geometry>
     </collision>
     <visual name="leg_fl_visual">
-      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${l_leg} ${w_leg} ${h_leg}"/>
       </geometry>
@@ -146,13 +146,13 @@
       <xacro:box_inertia m="${m_leg}" x="${l_leg}" y="${w_leg}" z="${h_leg}"/>
     </inertial>
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${l_leg} ${w_leg} ${h_leg}"/>
       </geometry>
     </collision>
     <visual name="leg_fr_visual">
-      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
         <box size="${l_leg} ${w_leg} ${h_leg}"/>
       </geometry>
@@ -162,7 +162,7 @@
   <!-- Add the wheels for the robot -->
   <link name="wheel_rl">
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
         <cylinder radius="${r_wheel}" length="${h_wheel}"/>
       </geometry>
@@ -178,13 +178,13 @@
       </surface>
     </collision>
     <visual name="wheel_rl_visual">
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
         <cylinder radius="${r_wheel}" length="${h_wheel}"/>
       </geometry>
     </visual>
     <inertial>
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <mass value="${m_wheel}"/>
       <cylinder_inertia m="${m_wheel}" r="${r_wheel}" h="${h_wheel}"/>
       <xacro:cylinder_inertia m="${m_wheel}" r="${r_wheel}" h="${h_wheel}"/>
@@ -193,7 +193,7 @@
 
   <link name="wheel_rr">
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
         <cylinder radius="${r_wheel}" length="${h_wheel}"/>
       </geometry>
@@ -209,13 +209,13 @@
       </surface>
     </collision>
     <visual name="wheel_rr_visual">
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
         <cylinder radius="${r_wheel}" length="${h_wheel}"/>
       </geometry>
     </visual>
     <inertial>
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <mass value="${m_wheel}"/>
       <cylinder_inertia m="${m_wheel}" r="${r_wheel}" h="${h_wheel}"/>
       <xacro:cylinder_inertia m="${m_wheel}" r="${r_wheel}" h="${h_wheel}"/>
@@ -224,7 +224,7 @@
 
   <link name="wheel_fr">
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
         <cylinder radius="${r_wheel}" length="${h_wheel}"/>
       </geometry>
@@ -240,13 +240,13 @@
       </surface>
     </collision>
     <visual name="wheel_fr_visual">
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
         <cylinder radius="${r_wheel}" length="${h_wheel}"/>
       </geometry>
     </visual>
     <inertial>
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <mass value="${m_wheel}"/>
       <cylinder_inertia m="${m_wheel}" r="${r_wheel}" h="${h_wheel}"/>
       <xacro:cylinder_inertia m="${m_wheel}" r="${r_wheel}" h="${h_wheel}"/>
@@ -255,7 +255,7 @@
 
   <link name="wheel_fl">
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
         <cylinder radius="${r_wheel}" length="${h_wheel}"/>
       </geometry>
@@ -271,13 +271,13 @@
       </surface>
     </collision>
     <visual name="wheel_fl_visual">
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
         <cylinder radius="${r_wheel}" length="${h_wheel}"/>
       </geometry>
     </visual>
     <inertial>
-      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <mass value="${m_wheel}"/>
       <cylinder_inertia m="${m_wheel}" r="${r_wheel}" h="${h_wheel}"/>
       <xacro:cylinder_inertia m="${m_wheel}" r="${r_wheel}" h="${h_wheel}"/>
