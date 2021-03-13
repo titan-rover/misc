@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 
 <!-- choose a name space and start xacro -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="common_models" xmlns:xacro="http://www.ros.org/wiki/xacro">
   
   <!-- Start by including all required xacro files which hold the macros -->
   <xacro:include filename="$(find sim_world)/models/common_models/common_models.gazebo" />
