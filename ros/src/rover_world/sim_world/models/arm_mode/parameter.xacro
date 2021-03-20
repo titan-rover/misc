@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   
+  <!-- Parameters for arm_21, radius [m] and lenght [m] -->
+    <xacro:property name="j1_r" value="0.124968" />
+    <xacro:property name="j1_l" value="0.040132" />
+
+  <!-- Parameters for arm_j2, radius [m] and lenght -->
+  <xacro:property name="j2_r" value="0.1016" />
+  <xacro:property name="j2_l" value="0.767842" />
 </robot>
 

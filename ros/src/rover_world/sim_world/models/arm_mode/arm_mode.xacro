@@ -10,5 +10,100 @@
   <xacro:include filename="$(find sim_world)/models/arm_mode/parameter.xacro" />
   <xacro:include filename="$(find sim_world)/models/common_models/common_models.xacro" />
 
+  <link name="arm_j1">
+    
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j1_r}" length="${j1_l}"/>
+      </geometry>
+    </collision>
+
+    <visual name="arm_j1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j1_r}" length="${j1_l}"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0"/>
+    </inertial>
+  </link>
+
+  <link name="arm_j2">
+    
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j2_r}" length="${j2_l}"/>
+      </geometry>
+    </collision>
+
+    <visual name="arm_j2_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j2_r}" length="${j2_l}"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0"/>
+    </inertial>
+  </link>
+
+  <transmission name="j1_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_j1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j1_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="j2_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_j2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j2_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- Joints -->
+  <joint type="revolute" name="chassis_link_arm_j1">
+    <origin xyz="0 0 ${z_chassis/2+j1_l/2}" rpy="0 0 0"/>
+    <child link="arm_j1"/>
+    <parent link="chassis_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <!-- velocity here is the max allowed velocity not the acutal velocity-->
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+    <joint type="revolute" name="arm_j1_arm_j2">
+    <origin xyz="0.2318 0 ${j1_l/2+j2_l/2+0.066802}" rpy="0 1.0887 0"/>
+    <child link="arm_j2"/>
+    <parent link="arm_j1"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <!-- velocity here is the max allowed velocity not the acutal velocity-->
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
 </robot>
 
