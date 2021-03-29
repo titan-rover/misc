@@ -39,16 +39,94 @@
   <link name="arm_j2">
     
     <collision name="collision">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 ${j2_l/2+0.033401}" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="${j2_r}" length="${j2_l}"/>
       </geometry>
     </collision>
 
     <visual name="arm_j2_visual">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 ${j2_l/2+0.033401}" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="${j2_r}" length="${j2_l}"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0"/>
+    </inertial>
+  </link>
+
+  <link name="arm_j3">
+    
+    <collision name="collision">
+      <origin xyz="0 0 ${j3_l/2+0.057}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j3_r}" length="${j3_l}"/>
+      </geometry>
+    </collision>
+
+    <visual name="arm_j3_visual">
+      <origin xyz="0 0 ${j3_l/2+0.057}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j3_r}" length="${j3_l}"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0"/>
+    </inertial>
+  </link>
+
+  <link name="arm_j4">
+    
+    <collision name="collision">
+      <origin xyz="0 0 ${j4_l/2+0.07}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j4_r}" length="${j4_l}"/>
+      </geometry>
+    </collision>
+
+    <visual name="arm_j4_visual">
+      <origin xyz="0 0 ${j4_l/2+0.07}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j4_r}" length="${j4_l}"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0"/>
+    </inertial>
+  </link>
+
+  <link name="arm_j5">
+    
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j5_r}" length="${j5_l}"/>
+      </geometry>
+    </collision>
+
+    <visual name="arm_j5_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${j5_r}" length="${j5_l}"/>
       </geometry>
     </visual>
 
@@ -84,9 +162,31 @@
     </actuator>
   </transmission>
 
+  <transmission name="j3_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_j3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j3_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="j4_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_j4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j4_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
   <!-- Joints -->
   <joint type="revolute" name="chassis_link_arm_j1">
-    <origin xyz="0 0 ${z_chassis/2+j1_l/2}" rpy="0 0 0"/>
+    <origin xyz="${x_chassis/2-0.62} ${-y_chassis/2+0.207} ${z_chassis/2+j1_l/2}" rpy="0 0 0"/>
     <child link="arm_j1"/>
     <parent link="chassis_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -95,10 +195,40 @@
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-    <joint type="revolute" name="arm_j1_arm_j2">
-    <origin xyz="0.2318 0 ${j1_l/2+j2_l/2+0.066802}" rpy="0 1.0887 0"/>
+  <joint type="revolute" name="arm_j1_arm_j2">
+    <origin xyz="0 0 ${j1_l/2+0.033401}" rpy="0 0.8 0"/>
     <child link="arm_j2"/>
     <parent link="arm_j1"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <!-- velocity here is the max allowed velocity not the acutal velocity-->
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <joint type="revolute" name="arm_j2_arm_j3">
+    <origin xyz="0 0 ${j2_l+0.033401+0.057}" rpy="0 1.0 0"/>
+    <child link="arm_j3"/>
+    <parent link="arm_j2"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <!-- velocity here is the max allowed velocity not the acutal velocity-->
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <joint type="revolute" name="arm_j3_arm_j4">
+    <origin xyz="0 0 ${j3_l+0.057+0.07}" rpy="0 0.7 0"/>
+    <child link="arm_j4"/>
+    <parent link="arm_j3"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <!-- velocity here is the max allowed velocity not the acutal velocity-->
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <joint type="revolute" name="arm_j4_arm_j5">
+    <origin xyz="0 0 ${j4_l+0.07+0.065}" rpy="0 0 0"/>
+    <child link="arm_j5"/>
+    <parent link="arm_j4"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <!-- velocity here is the max allowed velocity not the acutal velocity-->
     <limit effort="100" velocity="100"/>

@@ -8,5 +8,17 @@
   <!-- Parameters for arm_j2, radius [m] and lenght -->
   <xacro:property name="j2_r" value="0.1016" />
   <xacro:property name="j2_l" value="0.767842" />
+
+  <!-- Parameters for arm_j3, radius [m] and lenght -->
+  <xacro:property name="j3_r" value="0.1016" />
+  <xacro:property name="j3_l" value="0.435864" />
+
+  <!-- Parameters for arm_j4, radius [m] and lenght -->
+  <xacro:property name="j4_r" value="0.1016" />
+  <xacro:property name="j4_l" value="0.17145" />
+
+  <!-- Parameters for arm_j5, radius [m] and lenght -->
+  <xacro:property name="j5_r" value="0.1016" />
+  <xacro:property name="j5_l" value="0.122936" />
 </robot>
 

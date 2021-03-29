@@ -8,7 +8,6 @@
   <arg name="gui" 		default="true"/>
   <arg name="headless" 		default="false"/>
   <arg name="debug" 		default="false"/>
-  <arg name="mode"		default="common_models"/>
   
   <!-- Load the world environment -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -21,16 +20,15 @@
   </include>
 
   <!-- This command builds the urdf files from the xacro files by calling the launch file -->
-  <param name="$(arg mode)_description" command="$(find xacro)/xacro --inorder '$(find sim_world)/models/$(arg mode)/$(arg mode).xacro'"/>
-
+  <param name="arm_mode_description" command="$(find xacro)/xacro --inorder '$(find sim_world)/models/arm_mode/arm_mode.xacro'"/>
   
   <!-- Spawn the robot after we built the urdf files -->
-  <node name="$(arg mode)_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-   args="-urdf -param $(arg mode)_description -model $(arg mode)_mode" />
+  <node name="arm_mode_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+   args="-urdf -param arm_mode_description -model arm_mode" />
    
   <!-- Publish the Transformations -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" >
-    <remap from="robot_description" to="$(arg mode)_description" />
+    <remap from="robot_description" to="arm_mode_description" />
   </node>
   
 
