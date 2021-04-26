@@ -37,7 +37,8 @@
     <visual name='base_link_visual'>
 	  <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size="${x_chassis} ${y_chassis} ${z_chassis}"/>
+        <mesh filename="package://sim_world/meshes/chassis-w-baseplate.dae"/>
+        <!-- <box size="${x_chassis} ${y_chassis} ${z_chassis}"/> -->
       </geometry>
     </visual>
 
@@ -97,7 +98,8 @@
     <visual name="leg_rl_visual">
       <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
-        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+        <mesh filename="package://sim_world/meshes/tr_leg.dae"/>
+        <!-- <box size="${l_leg} ${w_leg} ${h_leg}"/> -->
       </geometry>
     </visual>
   </link>
@@ -116,7 +118,8 @@
     <visual name="leg_rr_visual">
       <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
-        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+        <mesh filename="package://sim_world/meshes/tr_leg.dae"/>
+        <!-- <box size="${l_leg} ${w_leg} ${h_leg}"/> -->
       </geometry>
     </visual>
   </link>
@@ -135,7 +138,8 @@
     <visual name="leg_fl_visual">
       <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
-        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+        <mesh filename="package://sim_world/meshes/Control_armsFL.dae"/>
+        <!-- <box size="${l_leg} ${w_leg} ${h_leg}"/> -->
       </geometry>
     </visual>
   </link>
@@ -154,7 +158,8 @@
     <visual name="leg_fr_visual">
       <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
       <geometry>
-        <box size="${l_leg} ${w_leg} ${h_leg}"/>
+        <mesh filename="package://sim_world/meshes/Control_armsFRv2.dae"/>
+        <!-- <box size="${l_leg} ${w_leg} ${h_leg}"/> -->
       </geometry>
     </visual>
   </link>
@@ -180,7 +185,8 @@
     <visual name="wheel_rl_visual">
       <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
-        <cylinder radius="${r_wheel}" length="${h_wheel}"/>
+        <mesh filename="package://sim_world/meshes/tr_wheel_left.dae"/>
+        <!-- <cylinder radius="${r_wheel}" length="${h_wheel}"/> -->
       </geometry>
     </visual>
     <inertial>
@@ -211,7 +217,8 @@
     <visual name="wheel_rr_visual">
       <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
-        <cylinder radius="${r_wheel}" length="${h_wheel}"/>
+        <mesh filename="package://sim_world/meshes/tr_wheel_right.dae"/>
+        <!-- <cylinder radius="${r_wheel}" length="${h_wheel}"/> -->
       </geometry>
     </visual>
     <inertial>
@@ -242,7 +249,8 @@
     <visual name="wheel_fr_visual">
       <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
-        <cylinder radius="${r_wheel}" length="${h_wheel}"/>
+        <mesh filename="package://sim_world/meshes/tr_wheel_right.dae"/>
+        <!-- <cylinder radius="${r_wheel}" length="${h_wheel}"/> -->
       </geometry>
     </visual>
     <inertial>
@@ -273,7 +281,8 @@
     <visual name="wheel_fl_visual">
       <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
       <geometry>
-        <cylinder radius="${r_wheel}" length="${h_wheel}"/>
+        <mesh filename="package://sim_world/meshes/tr_wheel_left.dae"/>
+        <!-- <cylinder radius="${r_wheel}" length="${h_wheel}"/> -->
       </geometry>
     </visual>
     <inertial>

@@ -18,7 +18,12 @@
     <include>
       <uri>model://sun</uri>
     </include>
-    
+
+    <include>
+      <name>Jerry</name>
+      <pose>1 0 0 0 0 0</pose>
+      <uri>model://person_standing</uri>
+    </include>  
     <!-- Set up the solver used for simulation -->  
     <physics name="ode_70iters" type="ode">
       <real_time_update_rate>1500</real_time_update_rate>
